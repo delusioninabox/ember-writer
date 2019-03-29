@@ -1,0 +1,14 @@
+textarea {
+  @apply .bg-tan;
+  width: 100%;
+  max-width: 600px;
+  font-family: 'Times New Roman', serif;
+  padding: 20px;
+  line-height: 1.6;
+  height: 80vh;
+}
+
+textarea:focus {
+  outline: 0;
+  border: 1px solid sienna;
+}

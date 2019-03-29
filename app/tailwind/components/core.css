@@ -1,0 +1,4 @@
+body {
+  @apply .bg-tan;
+  font-size: 16px;
+}
