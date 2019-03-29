@@ -3,7 +3,7 @@ import { later } from '@ember/runloop';
 import moment from 'moment';
 
 export default Route.extend({
-  countdownMins: 0.5,
+  countdownMins: 5,
   interval: 1000,
   timeRemaining: 0,
 

@@ -20,6 +20,6 @@ export default Model.extend({
 
   wordsPerMin: computed('totalTime', 'wordCount', function() {
     if( !this.get('totalTime') || !this.get('wordCount') ) return 0;
-    return Math.round(this.get('wordCount') / this.get('totalTime'));
+    return Math.ceil(this.get('wordCount') / this.get('totalTime'));
   })
 });
