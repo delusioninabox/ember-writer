@@ -1,0 +1,11 @@
+{{textarea value=yourText.textContent disabled=timesUp}}
+
+{{#if timesUp}}
+  <h2>You're done!</h2>
+  <p>{{yourText.wordsPerMin}}/wpm</p>
+  <p>{{yourText.wordCount}} words</p>
+  <p>{{moment-format yourText.timeStarted 'MM/DD/YY  h:mm:ss a'}}</p>
+  <p>{{moment-format yourText.timeFinished 'MM/DD/YY  h:mm:ss a'}}</p>
+{{/if}}
+
+{{timesUp}}

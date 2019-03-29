@@ -7,6 +7,10 @@ const Router = EmberRouter.extend({
 });
 
 Router.map(function() {
+  this.route('sprint', function() {
+    this.route('timed');
+    this.route('wordcount');
+  });
 });
 
 export default Router;
