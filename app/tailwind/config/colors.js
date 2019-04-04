@@ -28,4 +28,5 @@ export default {
   'white': '#ffffff',
 
   'tan': '#e8d8c3',
+  'paper': '#f8efd8'
 };

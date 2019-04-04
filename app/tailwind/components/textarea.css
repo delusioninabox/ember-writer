@@ -1,14 +1,39 @@
-textarea {
-  @apply .bg-tan;
-  width: 100%;
-  max-width: 600px;
-  font-family: 'Times New Roman', serif;
-  padding: 20px;
-  line-height: 1.6;
+.text-editor {
+  @apply .bg-paper .w-full;
   height: 80vh;
+  overflow: auto;
+  border-bottom: 1px solid sienna;
 }
 
-textarea:focus {
+textarea:focus,
+.text-editor:focus {
   outline: 0;
-  border: 1px solid sienna;
+}
+
+textarea:disabled {
+  color: sienna;
+}
+
+.text-editor p {
+  font-family: 'Georgia', serif;
+  font-size: 18px;
+  line-height: 1.6;
+  text-indent: 1.5rem;
+}
+
+.text-editor p:empty {
+  min-height: 18px;
+}
+
+.text-editor p:first-child {
+  text-indent: 0;
+}
+
+.text-editor p:first-child:first-letter {
+  @apply .text-tan;
+  float: left;
+  font-size: 70px;
+  line-height: 50px;
+  padding-top: 6px;
+  padding-right: 8px;
 }

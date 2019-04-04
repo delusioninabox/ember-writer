@@ -1,3 +1,17 @@
-{{text-editor yourText=model timesUp=timesUp}}
+<div class="flex">
+  <div class="w-1/4"></div>
+  <div class="w-1/2">
 
-<p>{{timeRemaining}} seconds remaining</p>
+    {{text-editor yourText=model timesUp=timesUp}}
+
+    <p>{{timeRemaining}} seconds remaining</p>
+
+    {{#if timesUp}}
+      <h2>You're done!</h2>
+      <p>{{model.wordsPerMin}}/wpm</p>
+      <p>{{model.wordCount}} words</p>
+    {{/if}}
+
+  </div>
+  <div class="w-1/4"></div>
+</div>

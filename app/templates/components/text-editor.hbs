@@ -1,7 +1,14 @@
-{{textarea value=yourText.textContent disabled=timesUp}}
+<div id="edit-block"
+    class="text-editor"
+    onkeypress={{action 'updateModel'}}
+    contenteditable={{if timesUp 'false' 'true'}}
+    >
+    <p></p>
+</div>
+{{textarea value=yourText.textContent id="textEditor" class="hidden"}}
 
 {{#if timesUp}}
-  <h2>You're done!</h2>
-  <p>{{yourText.wordsPerMin}}/wpm</p>
-  <p>{{yourText.wordCount}} words</p>
+  <div class="flex">
+    <button {{action "copyToClipboard"}}>Copy Text</button>
+  </div>
 {{/if}}
