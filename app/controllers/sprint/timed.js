@@ -3,7 +3,8 @@ import { computed } from '@ember/object';
 
 export default Controller.extend({
   goalTime: Date.now(),
-  timeRemaining: 60,
+  timeRemaining: 999,
+  finalResults: Array,
   timesUp: computed('timeRemaining', function() {
     return this.get('timeRemaining') <= 0;
   })

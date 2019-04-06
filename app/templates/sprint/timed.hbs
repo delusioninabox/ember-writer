@@ -2,14 +2,23 @@
   <div class="w-1/4"></div>
   <div class="w-1/2">
 
-    {{text-editor yourText=model timesUp=timesUp}}
+    {{text-editor yourText=model.user timesUp=timesUp}}
 
     <p>{{timeRemaining}} seconds remaining</p>
 
     {{#if timesUp}}
-      <h2>You're done!</h2>
-      <p>{{model.wordsPerMin}}/wpm</p>
-      <p>{{model.wordCount}} words</p>
+      <h2>Times Up!</h2>
+      <div class="flex">
+        {{#each finalResults as |result|}}
+          <div>
+            {{#if result.textContent}}
+              <p><strong>Your Score:</strong></p>
+            {{/if}}
+            <p>{{result.wordsPerMin}}/wpm</p>
+            <p>{{result.wordCount}} words</p>
+          </div>
+        {{/each}}
+      </div>
     {{/if}}
 
   </div>

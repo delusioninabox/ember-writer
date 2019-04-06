@@ -8,7 +8,7 @@ const Router = EmberRouter.extend({
 
 Router.map(function() {
   this.route('sprint', function() {
-    this.route('timed');
+    this.route('timed', { path: 'timed/:minutes' });
     this.route('wordcount');
   });
 });

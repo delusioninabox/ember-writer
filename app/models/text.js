@@ -14,8 +14,9 @@ export default Model.extend({
   timeFinished: attr('date', { defaultValue: Date.now() }),
   
   totalTime: computed('timeStarted', 'timeFinished', function() {
-    if ( !this.get('timeStarted') || !this.get('timeFinished') ) return;
-    return moment(this.get('timeFinished')).diff( moment(this.get('timeStarted') ), 'minutes')
+    if ( !this.get('timeStarted') || !this.get('timeFinished') ) return 0;
+    const seconds = moment(this.get('timeFinished')).diff( moment(this.get('timeStarted') ), 'seconds');
+    return Math.ceil( seconds / 60 );
   }),
 
   wordsPerMin: computed('totalTime', 'wordCount', function() {

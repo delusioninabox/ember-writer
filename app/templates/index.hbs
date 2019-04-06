@@ -1,0 +1,34 @@
+<section>
+  <div class="container">
+    <h1>Choose Your Editor:</h1>
+    <div class="flex">
+      <div class="w-1/4">
+
+        <h2>Timed Sprint</h2>
+        <div onclick={{action (mut sprintTime) 5}}>
+          <input type="radio" 
+            name="timedSprintGroup"
+            checked={{if (eq sprintTime 5) true false}}
+            >
+          5 minutes
+        </div>
+        <div onclick={{action (mut sprintTime) 10}}>
+          <input type="radio" 
+            name="timedSprintGroup"
+            checked={{if (eq sprintTime 10) true false}}
+            >
+          10 minutes
+        </div>
+        <div onclick={{action (mut sprintTime) 15}}>
+          <input type="radio" 
+            name="timedSprintGroup"
+            checked={{if (eq sprintTime 15) true false}}
+            >
+          15 minutes
+        </div>
+        {{#link-to 'sprint.timed' sprintTime}}Start {{sprintTime}} Minute Sprint!{{/link-to}}
+
+      </div>
+    </div>
+  </div>
+</section>
