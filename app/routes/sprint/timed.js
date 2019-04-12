@@ -53,7 +53,7 @@ export default Route.extend({
   */
   updateTimer() {
     later(this, function() {
-      const controller = this.get('controller');
+      const controller = this.controller;
       controller.set('model.user.timeFinished', Date.now());
       controller.set('timeRemaining',
         moment(controller.goalTime)
@@ -68,12 +68,12 @@ export default Route.extend({
   },
 
   getResults() {
-    const controller = this.get('controller');
+    const controller = this.controller;
     let results = [ controller.model.user ];
-    controller.model.bots.forEach((bot, index) => {
-      controller.set(`model.bots.${index}.userWordCount`, controller.model.user.wordCount);
-      controller.set(`model.bots.${index}.userTime`, controller.model.user.totalTime);
-      results.push(controller.get(`model.bots.${index}`));
+    controller.model.bots.map(bot => {
+      bot.set('userWordCount', controller.model.user.wordCount);
+      bot.set('userTime', controller.model.user.totalTime);
+      results.push(bot);
     });
     let sortedResults = results.sort(function(a,b) {
       return b.wordCount - a.wordCount;
