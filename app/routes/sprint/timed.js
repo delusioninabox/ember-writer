@@ -5,8 +5,8 @@ import moment from 'moment';
 
 export default Route.extend({
   countdownMins: 5,
-  interval: 1000,
-  timeRemaining: 0,
+  interval: 1000, // how often to update in ms
+  timeRemaining: 0, // in minutes
 
   model(params) {
     if(!params.minutes) this.transitionTo('index');
@@ -67,6 +67,11 @@ export default Route.extend({
     }, this.interval);
   },
 
+  /*
+    When sprint ends,
+    Generate bot result data,
+    Sort win order into finalResults
+  */
   getResults() {
     const controller = this.controller;
     let results = [ controller.model.user ];
@@ -77,7 +82,7 @@ export default Route.extend({
     });
     let sortedResults = results.sort(function(a,b) {
       return b.wordCount - a.wordCount;
-  });
+    });
     controller.set('finalResults', sortedResults);
   }
 });
