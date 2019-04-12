@@ -5,9 +5,9 @@ import { setupApplicationTest } from 'ember-qunit';
 module('Acceptance | Timed Sprint', function(hooks) {
   setupApplicationTest(hooks);
 
-  test('visiting /sprint/timed/10', async function(assert) {
-    await visit('/sprint/timed/10');
+  test('visiting /sprint/timed/1', async function(assert) {
+    await visit('/sprint/timed/1');
 
-    assert.equal(currentURL(), '/sprint/timed/10');
+    assert.equal(currentURL(), '/sprint/timed/1');
   });
 });
