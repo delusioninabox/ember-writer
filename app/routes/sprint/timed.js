@@ -26,8 +26,8 @@ export default Route.extend({
       Get minute goal
       Turn into a date/time reference
     */
-    const minuteGoal = this.get('countdownMins');
-    let goal = moment( model.user.get('timeStarted') ).add( minuteGoal, 'minutes');
+    const minuteGoal = this.countdownMins;
+    let goal = moment( model.user.timeStarted ).add( minuteGoal, 'minutes');
     controller.set('goalTime', goal);
     /*
       Start running timer countdown
@@ -40,7 +40,7 @@ export default Route.extend({
     Begin timer loop if interval exists
   */
   startTimer() {
-    if (!this.get('interval')) return;
+    if (!this.interval) return;
     this.updateTimer();
   },
 
@@ -53,30 +53,30 @@ export default Route.extend({
   */
   updateTimer() {
     later(this, function() {
-      const controller = this.get('controller');
+      const controller = this.controller;
       controller.set('model.user.timeFinished', Date.now());
       controller.set('timeRemaining',
-        moment(controller.get('goalTime'))
-        .diff(controller.get('model.user.timeFinished'), 's')
+        moment(controller.goalTime)
+        .diff(controller.model.user.timeFinished, 's')
       );
-      if (controller.get('timeRemaining') > 0) { 
+      if (controller.timeRemaining > 0) { 
         this.updateTimer();
       } else {
         this.getResults();
       }
-    }, this.get('interval'));
+    }, this.interval);
   },
 
   getResults() {
-    const controller = this.get('controller');
-    let results = [ controller.get('model.user') ];
-    controller.get('model.bots').forEach((bot, index) => {
-      controller.set(`model.bots.${index}.userWordCount`, controller.get('model.user.wordCount'));
-      controller.set(`model.bots.${index}.userTime`, controller.get('model.user.totalTime'));
-      results.push(controller.get(`model.bots.${index}`));
+    const controller = this.controller;
+    let results = [ controller.model.user ];
+    controller.model.bots.map(bot => {
+      bot.set('userWordCount', controller.model.user.wordCount);
+      bot.set('userTime', controller.model.user.totalTime);
+      results.push(bot);
     });
     let sortedResults = results.sort(function(a,b) {
-      return b.get('wordCount') - a.get('wordCount');
+      return b.wordCount - a.wordCount;
   });
     controller.set('finalResults', sortedResults);
   }

@@ -6,6 +6,6 @@ export default Controller.extend({
   timeRemaining: 999,
   finalResults: Array,
   timesUp: computed('timeRemaining', function() {
-    return this.get('timeRemaining') <= 0;
+    return this.timeRemaining <= 0;
   })
 });

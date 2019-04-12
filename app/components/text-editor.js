@@ -12,18 +12,18 @@ export default Component.extend({
   },
 
   didRender() {
-    /* Hook into the editor */
     document.getElementById('edit-block')
       .addEventListener("paste", function(e) {
         /*
-          Prevent default paste action
-          Get plain-text of text
-          Copy plain-text into edtior
+          Prevent pasting into block action
+          That's cheating!
         */
         e.preventDefault();
-        const copiedText = (e.originalEvent || e).clipboardData.getData('text/plain');
-        document.execCommand("insertHTML", false, copiedText);
       });
+  },
+
+  willDestroy() {
+    this.element.getElementById('edit-block').removeEventListener("paste");
   },
 
   actions: {

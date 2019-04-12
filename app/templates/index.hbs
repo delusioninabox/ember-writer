@@ -5,28 +5,30 @@
       <div class="w-1/4">
 
         <h2>Timed Sprint</h2>
-        <div onclick={{action (mut sprintTime) 5}}>
-          <input type="radio" 
-            name="timedSprintGroup"
-            checked={{if (eq sprintTime 5) true false}}
-            >
+        <div
+          role="radio"
+          {{action (mut sprintTime) 5}}
+          name="timedSprintGroup"
+          aria-checked={{if (eq sprintTime 5) true false}}
+        >
           5 minutes
         </div>
-        <div onclick={{action (mut sprintTime) 10}}>
-          <input type="radio" 
-            name="timedSprintGroup"
-            checked={{if (eq sprintTime 10) true false}}
-            >
+        <div 
+          role="radio"
+          {{action (mut sprintTime) 10}}
+          name="timedSprintGroup"
+          aria-checked={{if (eq sprintTime 10) true false}}
+        >
           10 minutes
         </div>
-        <div onclick={{action (mut sprintTime) 15}}>
-          <input type="radio" 
+        <div role="radio"
+            {{action (mut sprintTime) 15}} 
             name="timedSprintGroup"
-            checked={{if (eq sprintTime 15) true false}}
-            >
+            aria-checked={{if (eq sprintTime 15) true false}}
+          >
           15 minutes
         </div>
-        {{#link-to 'sprint.timed' sprintTime}}Start {{sprintTime}} Minute Sprint!{{/link-to}}
+        {{#link-to "sprint.timed" sprintTime}}Start {{sprintTime}} Minute Sprint!{{/link-to}}
 
       </div>
     </div>

@@ -1,11 +1,12 @@
 <div id="edit-block"
     class="text-editor"
-    onkeypress={{action 'updateModel'}}
-    contenteditable={{if timesUp 'false' 'true'}}
+    role="textbox"
+    onkeypress={{action "updateModel"}}
+    contenteditable={{if timesUp "false" "true"}}
     >
-    <p></p>
+  <p></p>
 </div>
-{{textarea value=yourText.textContent id="textEditor" class="hidden"}}
+{{input type="hidden" value=yourText.textContent id="textEditor"}}
 
 {{#if timesUp}}
   <div class="flex">
