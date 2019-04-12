@@ -13,14 +13,5 @@ module('Integration | Component | text-editor', function(hooks) {
     await render(hbs`{{text-editor}}`);
 
     assert.equal(this.element.textContent.trim(), '');
-
-    // Template block usage:
-    await render(hbs`
-      {{#text-editor}}
-        template block text
-      {{/text-editor}}
-    `);
-
-    assert.equal(this.element.textContent.trim(), 'template block text');
   });
 });

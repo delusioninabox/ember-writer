@@ -13,14 +13,5 @@ module('Integration | Component | site-footer', function(hooks) {
     await render(hbs`{{site-footer}}`);
 
     assert.equal(this.element.textContent.trim(), '');
-
-    // Template block usage:
-    await render(hbs`
-      {{#site-footer}}
-        template block text
-      {{/site-footer}}
-    `);
-
-    assert.equal(this.element.textContent.trim(), 'template block text');
   });
 });
