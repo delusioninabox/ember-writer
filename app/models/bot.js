@@ -11,8 +11,8 @@ export default Model.extend({
     a bot's word count is based on the random WPM
   */
   wordCount: computed('wordsPerMin', 'userTime', function() {
-    if( !this.get('wordsPerMin') ) return 0;
-    return Math.ceil( this.get('wordsPerMin') * this.get('userTime') );
+    if( !this.wordsPerMin ) return 0;
+    return Math.ceil( this.wordsPerMin * this.userTime );
   }),
 
 
@@ -21,8 +21,8 @@ export default Model.extend({
     within -20/+20 of the writer's
   */
   wordsPerMin: computed('userWordCount', 'userTime', function() {
-    if( !this.get('userWordCount') || !this.get('userTime') ) return 0;
-    const userWordPerMin = Math.ceil(this.get('userWordCount') / this.get('userTime'));
+    if( !this.userWordCount || !this.userTime ) return 0;
+    const userWordPerMin = Math.ceil(this.userWordCount / this.userTime);
     const max = userWordPerMin + 20;
     let min = userWordPerMin - 20;
     if( min < 25) min = 25;
